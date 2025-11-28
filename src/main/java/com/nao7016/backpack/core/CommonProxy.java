@@ -1,4 +1,4 @@
-package com.nao7016.backpack;
+package com.nao7016.backpack.core;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -12,8 +12,7 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
-        BackpackMain.LOG.info(Config.greeting);
-        BackpackMain.LOG.info("I am BackpackMain at version " + Tags.VERSION);
+        BPItems.registerItems();
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)

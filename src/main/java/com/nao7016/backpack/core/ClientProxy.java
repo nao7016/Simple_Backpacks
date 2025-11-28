@@ -1,4 +1,4 @@
-package com.nao7016.backpack;
+package com.nao7016.backpack.core;
 
 public class ClientProxy extends CommonProxy {
 

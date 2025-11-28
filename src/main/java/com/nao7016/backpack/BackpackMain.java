@@ -3,6 +3,8 @@ package com.nao7016.backpack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.nao7016.backpack.core.CommonProxy;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -16,8 +18,13 @@ public class BackpackMain {
     public static final String MODID = "simplebackpacks";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
-    @SidedProxy(clientSide = "com.nao7016.backpack.ClientProxy", serverSide = "com.nao7016.backpack.CommonProxy")
+    @SidedProxy(
+        clientSide = "com.nao7016.backpack.core.ClientProxy",
+        serverSide = "com.nao7016.backpack.core.CommonProxy")
     public static CommonProxy proxy;
+
+    @Mod.Instance
+    public static BackpackMain instance;
 
     @Mod.EventHandler
     // preInit "Run before anything else. Read your config, create blocks, items, etc, and register them with the
