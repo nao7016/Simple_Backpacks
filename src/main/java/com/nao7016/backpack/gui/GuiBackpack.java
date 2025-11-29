@@ -9,8 +9,10 @@ import com.nao7016.backpack.item.BackpackData;
 
 public class GuiBackpack extends GuiContainer {
 
-    private static final ResourceLocation texture_7x9 = new ResourceLocation("simplebackpacks:textures/gui/7x9_backpack.png");
-    private static final ResourceLocation texture_7x11 = new ResourceLocation("simplebackpacks:textures/gui/7x11_backpack.png");
+    private static final ResourceLocation texture_7x9 = new ResourceLocation(
+        "simplebackpacks:textures/gui/7x9_backpack.png");
+    private static final ResourceLocation texture_7x11 = new ResourceLocation(
+        "simplebackpacks:textures/gui/7x11_backpack.png");
 
     private final EntityPlayer player;
     private final String uuid;
@@ -47,7 +49,8 @@ public class GuiBackpack extends GuiContainer {
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         if (this.cols == 9) {
-            this.mc.getTextureManager().bindTexture(texture_7x9);
+            this.mc.getTextureManager()
+                .bindTexture(texture_7x9);
 
             int x = (this.width - this.xSize) / 2;
             int y = (this.height - this.ySize) / 2;
@@ -58,7 +61,8 @@ public class GuiBackpack extends GuiContainer {
             // player inventory background
             drawTexturedModalRect(x, y + this.rows * 18 + 17, 0, 143, this.xSize, 97);
         } else {
-            this.mc.getTextureManager().bindTexture(texture_7x11);
+            this.mc.getTextureManager()
+                .bindTexture(texture_7x11);
 
             int x = (this.width - this.xSize) / 2;
             int y = (this.height - this.ySize) / 2;

@@ -51,7 +51,8 @@ public class ContainerBackpack extends Container {
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
                 int index = col + row * 9 + 9;
-                this.addSlotToContainer(new Slot(player.inventory, index, playerInvX + col * 18, playerInvY + row * 18));
+                this.addSlotToContainer(
+                    new Slot(player.inventory, index, playerInvX + col * 18, playerInvY + row * 18));
             }
         }
 
