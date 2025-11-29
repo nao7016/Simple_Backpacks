@@ -126,9 +126,20 @@ public class BackpackData extends WorldSavedData {
             case 3:
                 return 63;
             case 4:
-                return 81;
+                return 77;
             default:
                 return 27;
+        }
+    }
+
+    public static int getColsForTier(int tier) {
+        switch (tier) {
+            case 1, 2, 3:
+                return 9;
+            case 4:
+                return 11;
+            default:
+                return 9;
         }
     }
 }

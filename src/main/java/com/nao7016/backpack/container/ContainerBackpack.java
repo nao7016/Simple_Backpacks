@@ -15,6 +15,7 @@ public class ContainerBackpack extends Container {
     private final BackpackData.BackpackInfo info;
 
     private final int rows;
+    private final int cols;
 
     public ContainerBackpack(EntityPlayer player, String uuid) {
         this.player = player;
@@ -24,28 +25,38 @@ public class ContainerBackpack extends Container {
         this.info = data.getInfo(uuid);
 
         int size = BackpackData.getSizeForTier(info.tier);
-        this.rows = size / 9;
+
+        if (info.tier == 4) {
+            this.rows = 7;
+            this.cols = 11;
+        } else {
+            this.rows = size / 9;
+            this.cols = 9;
+        }
 
         int offsetY = 18;
 
+        // Backpack slots
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < 9; col++) {
-                int index = col + row * 9;
+                int index = col + row * cols;
                 this.addSlotToContainer(
-                    new Slot(new InventoryBackpack(info.items), index, 8 + col * 18, offsetY + row * 18));
+                    new SlotBackpack(new InventoryBackpack(info.items), index, 8 + col * 18, offsetY + row * 18));
             }
         }
 
+        // Player inventory slots
+        int playerInvX = (this.cols * 18 + 14 - 162) / 2;
         int playerInvY = offsetY + rows * 18 + 14;
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
                 int index = col + row * 9 + 9;
-                this.addSlotToContainer(new Slot(player.inventory, index, 8 + col * 18, playerInvY + row * 18));
+                this.addSlotToContainer(new Slot(player.inventory, index, playerInvX + col * 18, playerInvY + row * 18));
             }
         }
 
         for (int col = 0; col < 9; col++) {
-            this.addSlotToContainer(new Slot(player.inventory, col, 8 + col * 18, playerInvY + 58));
+            this.addSlotToContainer(new Slot(player.inventory, col, playerInvX + col * 18, playerInvY + 58));
         }
     }
 
@@ -71,7 +82,7 @@ public class ContainerBackpack extends Container {
             ItemStack stack = slot.getStack();
             itemstack = stack.copy();
 
-            int backpackSize = this.rows * 9;
+            int backpackSize = this.rows * this.cols;
 
             if (index < backpackSize) {
                 if (!this.mergeItemStack(stack, backpackSize, this.inventorySlots.size(), true)) {
