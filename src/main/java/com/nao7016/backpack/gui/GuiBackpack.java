@@ -9,7 +9,7 @@ import com.nao7016.backpack.item.BackpackData;
 
 public class GuiBackpack extends GuiContainer {
 
-    private static final ResourceLocation texture = new ResourceLocation("simplebackpacks:textures/gui/backpack.png");
+    private static final ResourceLocation texture = new ResourceLocation("simplebackpacks:textures/gui/7x9_backpack.png");
 
     private final EntityPlayer player;
     private final String uuid;
@@ -47,6 +47,6 @@ public class GuiBackpack extends GuiContainer {
         drawTexturedModalRect(x, y, 0, 0, this.xSize, this.rows * 18 + 17);
 
         // player inventory background
-        // drawTexturedModalRect(x, y + this.rows * 18 + 17, 0, 179, this.xSize, 96);
+        drawTexturedModalRect(x, y + this.rows * 18 + 17, 0, 143, this.xSize, 97);
     }
 }
