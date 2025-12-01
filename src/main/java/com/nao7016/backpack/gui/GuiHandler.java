@@ -19,7 +19,7 @@ public class GuiHandler implements IGuiHandler {
             ItemStack backpack = player.getHeldItem();
 
             if (backpack != null && backpack.getItem() instanceof ItemBackpack) {
-                String uuid = ItemBackpack.getOrCreateUUID(backpack);
+                String uuid = ItemBackpack.getUUID(backpack);
                 return new ContainerBackpack(player, uuid);
             }
         }
@@ -33,7 +33,7 @@ public class GuiHandler implements IGuiHandler {
             ItemStack backpack = player.getHeldItem();
 
             if (backpack != null && backpack.getItem() instanceof ItemBackpack) {
-                String uuid = ItemBackpack.getOrCreateUUID(backpack);
+                String uuid = ItemBackpack.getUUID(backpack);
                 return new GuiBackpack(player, uuid);
             }
         }

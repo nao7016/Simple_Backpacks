@@ -14,12 +14,6 @@ public class BackpackData extends WorldSavedData {
 
     public static final String DataName = "backpack_data";
 
-    public static class BackpackInfo {
-
-        public int tier;
-        public ItemStack[] items;
-    }
-
     private Map<String, BackpackInfo> backpackMap = new HashMap<>();
 
     public BackpackData() {
@@ -141,5 +135,30 @@ public class BackpackData extends WorldSavedData {
             default:
                 return 9;
         }
+    }
+
+    public void upgradeTier(String uuid) {
+        BackpackInfo info = getInfo(uuid);
+        if (info.tier < 4) {
+            int oldSize = BackpackData.getSizeForTier(info.tier);
+            int newSize = BackpackData.getSizeForTier(info.tier + 1);
+
+            ItemStack[] newItems = new ItemStack[newSize];
+
+            for (int i = 0; i < oldSize; i++) {
+                newItems[i] = info.items[i];
+            }
+
+            info.items = newItems;
+            info.tier += 1;
+
+            markDirty();
+        }
+    }
+
+    public static class BackpackInfo {
+
+        public int tier;
+        public ItemStack[] items;
     }
 }

@@ -35,4 +35,6 @@
  */
 dependencies {
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.69-GTNH:dev")
+    runtimeOnlyNonPublishable("curse.maven:nbtreader-227127:2224950")
+    runtimeOnlyNonPublishable("curse.maven:inventory-tweaks-223094:2210792")
 }
